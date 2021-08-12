@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://songlinlibit.github.io">
-  <title>test2 | libit的博客</title>
+  <title>08/12 | libit的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="每天进步一丢丢">
+  <meta name="description" content="516. 最长回文子序列给你一个字符串 s ，找出其中最长的回文子序列，并返回该序列的长度。 子序列定义为：不改变剩余字符顺序的情况下，删除某些字符或者不删除任何字符形成的一个序列。 示例 1： 123输入：s &#x3D; &quot;bbbab&quot;输出：4解释：一个可能的最长回文子序列为 &quot;bbbb&quot; 。  示例 2： 123输入：s &#x3D; &quot;cbbd&quot;输出">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test2">
-<meta property="og:url" content="https://songlinlibit.github.io/2021/05/25/test2/index.html">
+<meta property="og:title" content="08&#x2F;12">
+<meta property="og:url" content="https://songlinlibit.github.io/2021/08/12/08-12/index.html">
 <meta property="og:site_name" content="libit的博客">
-<meta property="og:description" content="每天进步一丢丢">
+<meta property="og:description" content="516. 最长回文子序列给你一个字符串 s ，找出其中最长的回文子序列，并返回该序列的长度。 子序列定义为：不改变剩余字符顺序的情况下，删除某些字符或者不删除任何字符形成的一个序列。 示例 1： 123输入：s &#x3D; &quot;bbbab&quot;输出：4解释：一个可能的最长回文子序列为 &quot;bbbb&quot; 。  示例 2： 123输入：s &#x3D; &quot;cbbd&quot;输出">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-25T07:14:04.000Z">
-<meta property="article:modified_time" content="2021-06-06T06:22:40.447Z">
+<meta property="og:image" content="https://songlinlibit.github.io/2021/08/12/08-12/asset/08-12.png">
+<meta property="article:published_time" content="2021-08-12T08:52:20.000Z">
+<meta property="article:modified_time" content="2021-08-12T09:04:34.809Z">
 <meta property="article:author" content="libit">
+<meta property="article:tag" content="动态规划 - 状态压缩">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://songlinlibit.github.io/2021/08/12/08-12/asset/08-12.png">
   
     <link rel="alternative" href="/atom.xml" title="libit的博客" type="application/atom+xml">
   
@@ -148,27 +151,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-test2" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-08-12" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      test2
+      08/12
     </h1>
   
 
         
-        <a href="/2021/05/25/test2/" class="archive-article-date">
-  	<time datetime="2021-05-25T07:14:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-25</time>
+        <a href="/2021/08/12/08-12/" class="archive-article-date">
+  	<time datetime="2021-08-12T08:52:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="516-最长回文子序列"><a href="#516-最长回文子序列" class="headerlink" title="516. 最长回文子序列"></a>516. 最长回文子序列</h2><p>给你一个字符串 s ，找出其中最长的回文子序列，并返回该序列的长度。</p>
+<p>子序列定义为：不改变剩余字符顺序的情况下，删除某些字符或者不删除任何字符形成的一个序列。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：s = <span class="string">&quot;bbbab&quot;</span></span><br><span class="line">输出：<span class="number">4</span></span><br><span class="line">解释：一个可能的最长回文子序列为 <span class="string">&quot;bbbb&quot;</span> 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：s = <span class="string">&quot;cbbd&quot;</span></span><br><span class="line">输出：<span class="number">2</span></span><br><span class="line">解释：一个可能的最长回文子序列为 <span class="string">&quot;bb&quot;</span> 。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>1 &lt;= s.length &lt;= 1000</code></li>
+<li><code>s</code> 仅由小写英文字母组成<span id="more"></span>
+<img src="asset/08-12.png" alt="动规数组"></li>
+</ul>
+<p>本题用动规做会方便一点。</p>
+<p><strong>先定义状态。</strong></p>
+<p>由于求的是一个子序列区间，定义一段区间需要左端点和右端点。用一个上三角矩阵来存储状态。</p>
+<p>具体的，dp[i][j]的含义为在[i,j]区间内，能得到的回文子序列最大长度。</p>
+<hr>
+<p><strong>再求转移方程。</strong></p>
+<p>由图可知，由某一坐标出发，向左或向下，都在坐标所包含的区间范围内，理解了这个的基础上。</p>
+<p>我们可以定义，如果s[i] = s[j] ，那么在[i,j]区间内，能获得的最大回文子序列长度应该是去掉两端后能得到的最大长度，加上两端，即</p>
+<p>dp[i][j] = dp[i + 1][j - 1] + 2</p>
+<p>即使i+1&gt;j-1也不影响结果。</p>
+<p>如果s[i] ≠ s[j]，是不是可以直接另[i,j]的状态值，等于[i+1,j-1]的状态值呢，显然不可以。</p>
+<p>例如，”bbbba”在[0,4]区间上，’a’≠’b’,但是’b’可以与”<strong>b</strong>bb<strong>b</strong>a”中的’<strong>b</strong>‘组合形成回文，如果按照上面的思路，dp[0,4]的值应该是3，而实际是4。</p>
+<p>因此此时的状态转移方程应该为</p>
+<p>f[i][j] = max(f[i + 1][j], f[i][j - 1])</p>
+<hr>
+<p><strong>下一步定初始化。</strong></p>
+<p>初始化即为 dp[i][i] = 1，因为每一个元素自成回文序列。</p>
+<hr>
+<p><strong>最后定义返回状态值</strong></p>
+<p>即最大区间求得的状态值dp[0][n-1]</p>
+<hr>
+<p>完整代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">longestPalindromeSubseq</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.<span class="built_in">length</span>();</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">dp</span>(n, vector&lt;<span class="keyword">int</span>&gt;(n));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            dp[i][i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (s[i] == s[j]) &#123;</span><br><span class="line">                    dp[i][j] = dp[i + <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">2</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    dp[i][j] = <span class="built_in">max</span>(dp[i + <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][n - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>进阶：这里还可以用状态压缩把二阶dp化简成一阶dp，太麻烦了先不做了。</p>
+
       
 
       
@@ -176,6 +217,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">动态规划 - 状态压缩</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
@@ -200,18 +252,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/08/12/08-12/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          08/12
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/05/25/test/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">test</div>
+    <a href="/2021/05/25/test2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">test2</div>
       <i class="icon-circle-right"></i>
     </a>
   
